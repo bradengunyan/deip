@@ -28,6 +28,8 @@ var buttonBorder = '2px solid #474747';
 var buttonFontSize = '8px';
 var buttonTextShadow = '0 0 10px #000000';
 var buttonScale = 'scale(1.3)';
+var message = "";
+var timeout;
 document.addEventListener('DOMContentLoaded', function() {
   buttons.push(document.getElementById('maxHealthButton'));
   buttons.push(document.getElementById('regenSpeedButton'));
@@ -103,6 +105,14 @@ function drawShape(x, y, r, sides) {
     firstPoint = secondPoint;
   }
 }
+function showMessage(message) {
+  clearTimeout(timeout);
+  document.getElementById('message').innerText = message;
+  document.getElementById('message').classList.remove('hidden');
+  timeout = setTimeout(function() {
+      document.getElementById('message').classList.add('hidden');
+  }, 2200);
+}
 function move(x, y) {
       canvas.acceleration.add(new createVector(x, y));
     //  minimap.acceleration.add(canvas.acceleration/40);
@@ -158,6 +168,7 @@ function applyCollisionForceToObject(object, vector) {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  document.getElementById('message').style.left = (windowWidth/2) + 'px';
   Upgrades = function () {
     this.position = new createVector(-windowWidth/2 + 310, windowHeight - 725);
     this.velocity = new createVector(0, 0);
@@ -1681,10 +1692,7 @@ keyTyped = function () {
     switch (key.toString()) {
         case "e":
             autoFire += 1;
-            if (canvas.reload()) {
-                bullets.push(new Bullet(new createVector(m.x, m.y)));
-                canvas.reloadTime = upgrades[0].reloadTime;
-            }
+            showMessage(message);
             break;
 
         case "1":
@@ -1743,7 +1751,8 @@ if (keyIsPressed) {
   let movementDirection = getCombinedMovement();
   move(movementDirection.x, movementDirection.y);
 }
-  if (mouseIsPressed) {
+  if (mouseIsPressed || autoFire % 2 == 1) {
+    message = "Auto-Fire is disabled.";
     if (canvas.reload() && !(mouseX < windowWidth/4.5 && mouseY > windowHeight/1.4)) {
       bullets.push(new Bullet(new createVector(m.x, m.y)));
       explosion.push(new Explosion(new createVector(m.x/2, m.y/2)));
@@ -1759,6 +1768,9 @@ if (keyIsPressed) {
       explosion.splice(0, 1);
       canvas.reloadTime = upgrades[0].reloadTime;
     }
+  }
+  else {
+    message = "Auto-Fire is enabled.";
   }
   for (let i = 0; i < shapes.length; i++) {
     shapes[i].run();

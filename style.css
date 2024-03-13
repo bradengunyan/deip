@@ -125,3 +125,20 @@ html, body {
 #movementSpeedButton:hover {
   background-color: rgb(0, 175, 131);
 }
+#message {
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4747473f;
+  border: 2px #474747;
+  padding: 1px;
+  color: #3a3a3a;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+.hidden {
+  display: none;
+}
