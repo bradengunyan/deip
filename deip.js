@@ -179,7 +179,7 @@ function degmod() {
   }
 }
 keyTyped = function () {
-  switch (key.toString()) {
+  switch (key.toString().toLowerCase()) {
     case "e":
       autoFire += 1;
       showMessage(message);

@@ -1,19 +1,3 @@
-class Explosion {
-    constructor(p, vector) {
-      this.position = p;
-      this.vector = vector;
-      this.power = upgrades[0].bulletSpeed * 50000;
-    }
-    calculateForce() {
-      console.log(this.vector);
-      var dir = p5.Vector.sub(this.position, this.vector);
-      var distance = dir.mag();
-      var force = (-1 * this.power) / (distance * distance);
-      dir.normalize();
-      dir.mult(force);
-      return dir;
-    }
-  }
 class Tangle {
     constructor(p) {
       this.position = p;

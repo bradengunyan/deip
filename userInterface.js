@@ -136,6 +136,22 @@ class Upgrades {
       return (mouseX < windowWidth / 4.5 && mouseY > windowHeight / 1.4) || this.level > 0;
     }
   }
+  class Explosion {
+    constructor(p, vector) {
+      this.position = p;
+      this.vector = vector;
+      this.power = upgrades[0].bulletSpeed * 50000;
+    }
+    calculateForce() {
+      console.log(this.vector);
+      var dir = p5.Vector.sub(this.position, this.vector);
+      var distance = dir.mag();
+      var force = (-1 * this.power) / (distance * distance);
+      dir.normalize();
+      dir.mult(force);
+      return dir;
+    }
+  }
   class Canvas {
     constructor() {
       this.center = new createVector(width / 2, height / 2);
