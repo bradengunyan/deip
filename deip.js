@@ -10,7 +10,7 @@ var bots = [];
 var minimap;
 var autoFire = 2;
 var autoSpin = 1;
-var scaleFactor = 1;
+var scaleFactor = 1.5;
 var frictionC = 0.5;
 var explosion = [];
 var upgrades = [];
@@ -18,13 +18,13 @@ var gun = [];
 var position;
 var buttons = [];
 var buttonLeft = 215;
-var buttonTop = 810;
-var buttonTopMod = 17.7;
+var buttonTop = 766;
+var buttonTopMod = 22;
 var buttonPadding = '0px 7px';
 var buttonBorder = '2px solid rgb(20, 20, 20)';
 var buttonFontSize = '8px';
 var buttonTextShadow = '0 0 10px #000000';
-var buttonScale = 'scale(1.3)';
+var buttonScale = 'scale(1.6)';
 var message = "";
 var spinMessage = "";
 var timeout;
@@ -271,7 +271,7 @@ draw = function () {
   if (mouseIsPressed || autoFire % 2 == 1) {
     message = "Auto-Fire is disabled.";
     if ((canvas.reload() && autoSpin % 2 == 1) && !(mouseX < windowWidth / 4.5 && mouseY > windowHeight / 1.4)) {
-      bullets.push(new Bullet(new createVector(m.x, m.y)));
+      bullets.push(new Bullet(m));
       explosion.push(new Explosion(new createVector(m.x / 2, m.y / 2), m));
       let ind = bullets.length - 1;
       bullets[ind].modA = explosion[0].calculateForce();
@@ -291,7 +291,7 @@ draw = function () {
       a.y = sin(gun[0].autoDegrees + 90);
       a.mult(20);
       bullets.push(new Bullet(a));
-      explosion.push(new Explosion(a.mult(0.5), a));
+      explosion.push(new Explosion(new createVector(a.x / 2, a.y / 2), a));
       let ind = bullets.length - 1;
       bullets[ind].modA = explosion[0].calculateForce();
       canvas.applyForce(canvas.modAcc, explosion[0].calculateForce());

@@ -1,6 +1,6 @@
 class Upgrades {
     constructor() {
-      this.position = new createVector(-windowWidth / 2 + 310, windowHeight - 725);
+      this.position = new createVector(-windowWidth / 2 + 510, windowHeight - 800);
       this.velocity = new createVector(0, 0);
       this.show = 1;
       this.trans = 255;
@@ -33,7 +33,7 @@ class Upgrades {
     }
     update() {
       for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.left = ((buttonLeft + this.position.x + 580) * 1.3) + 'px';
+        buttons[i].style.left = ((buttonLeft + this.position.x + 445) * 1.6) + 'px';
       }
       this.position.add(this.velocity);
       if (this.exp > this.levelUp) {
@@ -44,11 +44,11 @@ class Upgrades {
         this.level += 1;
       }
       if (this.animate()) {
-        if (this.position.x < -windowWidth / 2 + 310) {
+        if (this.position.x < -windowWidth / 2 + 450) {
           this.velocity.x = 10;
         }
-        if (this.position.x > -windowWidth / 2 + 310) {
-          this.position.x = -windowWidth / 2 + 310;
+        if (this.position.x > -windowWidth / 2 + 450) {
+          this.position.x = -windowWidth / 2 + 450;
           this.velocity.x = 0;
         }
       } else if (!this.animate()) {
@@ -89,7 +89,7 @@ class Upgrades {
       strokeWeight(1.7);
       stroke(10);
       fill(60);
-      scale(1.3);
+      scale(1.6);
       text("Upgrades (" + this.level + ")", this.position.x - 25, this.position.y - 10);
       fill(70);
       rect(this.position.x, this.position.y, 120, 10, 10);

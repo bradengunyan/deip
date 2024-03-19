@@ -634,6 +634,7 @@ class DefaultGun {
         spinMessage = "Auto-Spin is disabled.";
         rotate(this.autoDegrees);
       }
+      scale(scaleFactor-0.25);
       this.tank.display();
       push();
       translate(this.center.x, this.center.y);
