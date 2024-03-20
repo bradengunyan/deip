@@ -183,7 +183,7 @@ class Upgrades {
       tankUpgradeButtons[1].style.left = this.position.x - (windowWidth / 20 + 10) + 160 + 'px';
       tankUpgradeButtons[2].style.left = this.position.x - (windowWidth / 20 + 10) + 60 + 'px';
       tankUpgradeButtons[3].style.left = this.position.x - (windowWidth / 20 + 10) + 160 + 'px';
-      tankUpgradeButtons[4].style.left = this.position.x - (windowWidth / 20 + 10) + 105 + 'px';
+      tankUpgradeButtons[4].style.left = this.position.x - (windowWidth / 20 + 10) + 110 + 'px';
       pop();
     }
     animate() {
