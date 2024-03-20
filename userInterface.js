@@ -32,9 +32,6 @@ class Upgrades {
       this.display();
     }
     update() {
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.left = ((buttonLeft + this.position.x + 445) * 1.6) + 'px';
-      }
       this.position.add(this.velocity);
       if (this.exp > this.levelUp) {
         this.exp -= this.levelUp;
@@ -122,6 +119,7 @@ class Upgrades {
       rectMode(CENTER);
       fill(255);
       stroke(10);
+      textStyle(BOLD);
       text("Max Health  [ 1 ]", this.position.x - 50, this.position.y + 3);
       text("Regen Speed  [ 2 ]", this.position.x - 50, this.position.y + 17);
       text("Body Damage  [ 3 ]", this.position.x - 50, this.position.y + 30);
@@ -130,6 +128,9 @@ class Upgrades {
       text("Bullet Damage  [ 6 ]", this.position.x - 50, this.position.y + 71);
       text("Reload Time [ 7 ]", this.position.x - 50, this.position.y + 85);
       text("Movement Speed [ 8 ]", this.position.x - 50, this.position.y + 99);
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.left = ((215 + this.position.x + 445) * 1.6) + 'px';
+      }
       pop();
     }
     animate() {
@@ -150,6 +151,43 @@ class Upgrades {
       dir.normalize();
       dir.mult(force);
       return dir;
+    }
+  }
+  class TankUpgrade {
+    constructor() {
+      this.position = new createVector(windowWidth / 20 + 10, windowHeight / 20 - 10);
+      this.velocity = new createVector(0, 0);
+    }
+    run() {
+      this.update();
+      this.display();
+    }
+    update() {
+      this.position.add(this.velocity);
+    }
+    display() {
+      var center = new createVector(width / 2, height / 2);
+      var m = new createVector(mouseX, mouseY);
+      m.sub(center);
+      m.normalize();
+      m.mult(20);
+      push();
+      rectMode(CENTER);
+      angleMode(DEGREES);
+      stroke(70);
+      strokeWeight(3);
+      fill(140);
+      textSize(16);
+      text("Upgrades", this.position.x, this.position.y);
+      tankUpgradeButtons[0].style.left = this.position.x - (windowWidth / 20 + 10) + 60 + 'px';
+      tankUpgradeButtons[1].style.left = this.position.x - (windowWidth / 20 + 10) + 160 + 'px';
+      tankUpgradeButtons[2].style.left = this.position.x - (windowWidth / 20 + 10) + 60 + 'px';
+      tankUpgradeButtons[3].style.left = this.position.x - (windowWidth / 20 + 10) + 160 + 'px';
+      tankUpgradeButtons[4].style.left = this.position.x - (windowWidth / 20 + 10) + 105 + 'px';
+      pop();
+    }
+    animate() {
+      return (mouseX < windowWidth / 4.5 && mouseY > windowHeight / 1.4) || this.level > 0;
     }
   }
   class Canvas {

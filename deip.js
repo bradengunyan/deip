@@ -17,17 +17,11 @@ var upgrades = [];
 var gun = [];
 var position;
 var buttons = [];
-var buttonLeft = 215;
-var buttonTop = 766;
-var buttonTopMod = 22;
-var buttonPadding = '0px 7px';
-var buttonBorder = '2px solid rgb(20, 20, 20)';
-var buttonFontSize = '8px';
-var buttonTextShadow = '0 0 10px #000000';
-var buttonScale = 'scale(1.6)';
 var message = "";
 var spinMessage = "";
 var timeout;
+var tankUpgradeButtons = [];
+var ignoreButton;
 document.addEventListener('DOMContentLoaded', function () {
   buttons.push(document.getElementById('maxHealthButton'));
   buttons.push(document.getElementById('regenSpeedButton'));
@@ -37,14 +31,27 @@ document.addEventListener('DOMContentLoaded', function () {
   buttons.push(document.getElementById('bulletDamageButton'));
   buttons.push(document.getElementById('reloadSpeedButton'));
   buttons.push(document.getElementById('movementSpeedButton'));
+  tankUpgradeButtons.push(document.getElementById('tankUpgradeOneButton'));
+  tankUpgradeButtons.push(document.getElementById('tankUpgradeTwoButton'));
+  tankUpgradeButtons.push(document.getElementById('tankUpgradeThreeButton'));
+  tankUpgradeButtons.push(document.getElementById('tankUpgradeFourButton'));
+  tankUpgradeButtons.push(document.getElementById('ignoreTankUpgradeButton'));
+  for (let i = 0; i < tankUpgradeButtons.length - 1; i++) {
+    tankUpgradeButtons[i].style.padding = '25px 25px';
+    tankUpgradeButtons[i].style.border = '2px solid rgb(40, 40, 40)';
+    tankUpgradeButtons[i].style.fontSize = '8px';
+    tankUpgradeButtons[i].style.textShadow = '0 0 10px #000000';
+    tankUpgradeButtons[i].style.transform = 'scale(1.6)';
+    tankUpgradeButtons[i].style.borderRadius = '4px';
+  }
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].style.top = buttonTop + buttonTopMod * i + 'px';
-    buttons[i].style.padding = buttonPadding;
-    buttons[i].style.left = buttonLeft + 'px';
-    buttons[i].style.border = buttonBorder;
-    buttons[i].style.fontSize = buttonFontSize;
-    buttons[i].style.textShadow = buttonTextShadow;
-    buttons[i].style.transform = buttonScale;
+    buttons[i].style.top = 766 + 22 * i + 'px';
+    buttons[i].style.padding = '0px 7px';
+    buttons[i].style.left = 215 + 'px';
+    buttons[i].style.border = '2px solid rgb(20, 20, 20)';
+    buttons[i].style.fontSize = '8px';
+    buttons[i].style.textShadow = '0 0 10px #000000';
+    buttons[i].style.transform = 'scale(1.6)';
   }
   function handleButtonClick(buttonId) {
     switch (buttonId) {
@@ -230,20 +237,8 @@ function setup() {
   upgrades.push(new Upgrades());
   canvas = new Canvas();
   addShapes = new Shapes();
-  defaultGun = new DefaultGun();
-  twin = new Twin();
-  sniper = new Sniper();
-  machineGun = new MachineGun();
-  flankGuard = new FlankGuard();
-  assassin = new Assassin();
-  overseer = new Overseer();
-  destroyer = new Destroyer();
-  gunner = new Gunner();
-  triTank = new TriTank();
-  quadTank = new QuadTank();
-  twinFlank = new TwinFlank();
-  smasher = new Smasher();
-  gun.push(new Gun(defaultGun));
+  gun.push(new Gun(new Booster()));
+  tankUpgrade = new TankUpgrade();
   minimap = new Minimap();
 }
 draw = function () {
@@ -329,6 +324,7 @@ draw = function () {
   }
   pop();
   upgrades[0].run();
+  tankUpgrade.run();
   gun[0].run();
   minimap.run();
 };

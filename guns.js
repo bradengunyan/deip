@@ -387,8 +387,21 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(10, 13, 15, 32);
+      rect(-10, 13, 15, 32);
+      rect(0, 15, 15, 37);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -403,8 +416,43 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      angleMode(DEGREES);
+      push();
+      fill(180, 180, 180, gun[0].transparent);
+      rotate(50);
+      rect(0, 13, 15, 29);
+      rotate(350);
+      rect(0, 13, 15, 31);
+      rotate(350);
+      rect(0, 13, 15, 32);
+      rotate(350);
+      rect(0, 13, 15, 34);
+      rotate(350);
+      rect(0, 13, 15, 36);
+      rotate(300);
+      rect(0, 13, 15, 29);
+      rotate(10);
+      rect(0, 13, 15, 31);
+      rotate(10);
+      rect(0, 13, 15, 32);
+      rotate(10);
+      rect(0, 13, 15, 34);
+      rotate(10);
+      rect(0, 13, 15, 36);
+      rotate(10);
+      rect(0, 15, 15, 37);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
+      pop();
     }
   }
   
@@ -419,8 +467,34 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      angleMode(DEGREES);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      rotate(45);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      rotate(90);
+      rect(0, 17, 15, 35);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -435,8 +509,29 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      push();
+      angleMode(DEGREES);
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(-8.5, 17, 14, 32);
+      rect(8.5, 17, 14, 32);
+      rotate(120);
+      rect(-8.5, 17, 14, 32);
+      rect(8.5, 17, 14, 32);
+      rotate(120);
+      rect(-8.5, 17, 14, 32);
+      rect(8.5, 17, 14, 32);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
+      pop();
     }
   }
   
@@ -451,8 +546,20 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(0, 18, 16, 48);
+      quad(-8, 22, 8, 22, 15, 2, -15, 2);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -467,8 +574,19 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      quad(-8, 45, 8, 45, 15, 2, -15, 2);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -483,8 +601,27 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      push();
+      angleMode(DEGREES);
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      fill(180, 180, 180, gun[0].transparent);
+      triangle(0, -17, 13, 25, -13, 25);
+      rotate(90);
+      triangle(0, -17, 13, 25, -13, 25);
+      rotate(90);
+      triangle(0, -17, 13, 25, -13, 25);
+      rotate(90);
+      triangle(0, -17, 13, 25, -13, 25);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
+      pop();
     }
   }
   
@@ -499,8 +636,23 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(0, 18, 15, 45);
+      rect(0, 18, 15, 39);
+      rect(0, 18, 15, 33);
+      rect(0, 18, 15, 27);
+      rect(0, 18, 15, 21);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -515,8 +667,19 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(0, 17, 35, 36);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -531,8 +694,28 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      stroke(140, 140, 140, gun[0].transparent);
+      strokeWeight(1.5);
+      rectMode(CENTER);
+      angleMode(DEGREES);
+      fill(180, 180, 180, gun[0].transparent);
+      rect(0, 17, 16, 38);
+      rotate(130);
+      rect(0, 15, 15, 28);
+      rotate(20);
+      rect(0, 17, 15, 28);
+      rotate(80);
+      rect(0, 15, 15, 28);
+      rotate(340);
+      rect(0, 17, 15, 28);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
     }
   }
   
@@ -547,8 +730,42 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      push();
+      stroke(70, 70, 70, gun[0].transparent);
+      strokeWeight(1.5);
+      fill(100, 100, 100, gun[0].transparent);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 24, 4, 18, -4, 18);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
+      pop();
     }
   }
   
@@ -563,8 +780,42 @@ class DefaultGun {
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
       this.position = createVector(0, 0);
-      this.size = 35;
+      this.size = 37;
       this.mass = upgrades[0].health / 5;
+    }
+    display() {
+      push();
+      stroke(70, 70, 70, gun[0].transparent);
+      strokeWeight(1.5);
+      fill(100, 100, 100, gun[0].transparent);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      rotate(30);
+      triangle(0, 21, 4, 18, -4, 18);
+      strokeWeight(1.5);
+      stroke(5, 141, 232, gun[0].transparent);
+      fill(0, 179, 255, gun[0].transparent);
+      ellipse(0, 0, this.size, this.size);
+      pop();
     }
   }
   class Gun {
