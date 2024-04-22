@@ -22,7 +22,22 @@ class DefaultGun {
       fill(0, 179, 255, gun[0].transparent);
       ellipse(0, 0, this.size, this.size);
     }
-  }
+    shoot(vector) {
+      bullets.push(new Bullet(vector));
+      explosion.push(new Explosion(new createVector(vector / 2, vector / 2), vector));
+      let ind = bullets.length - 1;
+      bullets[ind].modA = explosion[0].calculateForce();
+      canvas.applyForce(canvas.modAcc, explosion[0].calculateForce());
+      for (let i = 0; i < shapes.length; i++) {
+        shapes[i].applyForce(shapes[i].modAcc, explosion[0].calculateForce());
+      }
+      for (let i = 0; i < bullets.length - 1; i++) {
+        bullets[i].applyForce(bullets[i].modAcc, explosion[0].calculateForce());
+      }
+      explosion.splice(0, 1);
+      canvas.reloadTime = upgrades[0].reloadTime;
+    }
+  } 
   class Twin {
     constructor() {
       this.maxHealth = upgrades[0].maxHealth;
@@ -49,6 +64,11 @@ class DefaultGun {
       stroke(5, 141, 232, gun[0].transparent);
       fill(0, 179, 255, gun[0].transparent);
       ellipse(0, 0, this.size, this.size);
+    }
+    shoot() {
+      bullets.push(new Bullet(m));
+      bullets.push(new Bullet(-m));
+      explosion.push(new Explosion(new createVector(m.x / 2, m.y / 2), m));
     }
   }
   
