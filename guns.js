@@ -65,11 +65,6 @@ class DefaultGun {
       fill(0, 179, 255, gun[0].transparent);
       ellipse(0, 0, this.size, this.size);
     }
-    shoot() {
-      bullets.push(new Bullet(m));
-      bullets.push(new Bullet(-m));
-      explosion.push(new Explosion(new createVector(m.x / 2, m.y / 2), m));
-    }
   }
   
   class Sniper {
@@ -152,6 +147,25 @@ class DefaultGun {
       stroke(5, 141, 232, gun[0].transparent);
       fill(0, 179, 255, gun[0].transparent);
       ellipse(0, 0, this.size, this.size);
+    }
+    shoot(vector) {
+      let oppVector = vector.copy().mult(-1);
+      bullets.push(new Bullet(vector));
+      bullets.push(new Bullet(oppVector));
+      explosion.push(new Explosion(new createVector(vector / 2, vector / 2), vector));
+      explosion.push(new Explosion(new createVector(oppVector / 6, oppVector / 6), oppVector));
+      let ind = bullets.length - 1;
+      bullets[ind - 1].modA = explosion[0].calculateForce();
+      bullets[ind].modA = explosion[1].calculateForce();
+      canvas.applyForce(canvas.modAcc, explosion[0].calculateForce().mult(0.5));
+      for (let i = 0; i < shapes.length; i++) {
+        shapes[i].applyForce(shapes[i].modAcc, explosion[0].calculateForce().mult(0.5));
+      }
+      for (let i = 0; i < bullets.length - 1; i++) {
+        bullets[i].applyForce(bullets[i].modAcc, explosion[0].calculateForce().mult(0.5));
+      }
+      explosion.splice(0, 2);
+      canvas.reloadTime = upgrades[0].reloadTime;
     }
   }
   class Assassin {

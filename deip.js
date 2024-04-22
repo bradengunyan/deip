@@ -237,7 +237,7 @@ function setup() {
   upgrades.push(new Upgrades());
   canvas = new Canvas();
   addShapes = new Shapes();
-  gun.push(new Gun(new DefaultGun()));
+  gun.push(new Gun(new FlankGuard()));
   tankUpgrade = new TankUpgrade();
   minimap = new Minimap();
 }

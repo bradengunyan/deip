@@ -144,7 +144,6 @@ class Upgrades {
       this.power = upgrades[0].bulletSpeed * 50000;
     }
     calculateForce() {
-      console.log(this.vector);
       var dir = p5.Vector.sub(this.position, this.vector);
       var distance = dir.mag();
       var force = (-1 * this.power) / (distance * distance);
