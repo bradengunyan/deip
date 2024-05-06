@@ -140,7 +140,7 @@ class Upgrades {
   class Explosion {
     constructor(p, vector) {
       this.position = p;
-      this.vector = vector;
+      this.vector = vector.copy();
       this.power = upgrades[0].bulletSpeed * 50000;
     }
     calculateForce() {

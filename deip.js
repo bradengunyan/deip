@@ -237,13 +237,13 @@ function setup() {
   upgrades.push(new Upgrades());
   canvas = new Canvas();
   addShapes = new Shapes();
-  gun.push(new Gun(new FlankGuard()));
+  gun.push(new Gun(new DefaultGun()));
   tankUpgrade = new TankUpgrade();
   minimap = new Minimap();
 }
 draw = function () {
   background(200);
-  var factor = 1 - upgrades[0].skill / 100;
+  let factor = 1.5 - upgrades[0].skill / 100 - gun[0].tier;
   var center = new createVector(width / 2, height / 2);
   var m = new createVector(mouseX, mouseY);
   m.sub(center);

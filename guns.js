@@ -8,7 +8,7 @@ class DefaultGun {
       this.bulletDamage = upgrades[0].bulletDamage;
       this.reloadSpeed = upgrades[0].reloadSpeed;
       this.movementSpeed = upgrades[0].movementSpeed;
-      this.mass = upgrades[0].health / 5;
+      this.mass = (upgrades[0].health * (upgrades[0].skill / 10)) / 5;
       this.size = 34;
     }
     display() {
@@ -23,8 +23,8 @@ class DefaultGun {
       ellipse(0, 0, this.size, this.size);
     }
     shoot(vector) {
-      bullets.push(new Bullet(vector));
-      explosion.push(new Explosion(new createVector(vector / 2, vector / 2), vector));
+      bullets.push(new Bullet(vector, 1, 1));
+      explosion.push(new Explosion(new createVector(vector / 2, vector / 2, 1), vector));
       let ind = bullets.length - 1;
       bullets[ind].modA = explosion[0].calculateForce();
       canvas.applyForce(canvas.modAcc, explosion[0].calculateForce());
@@ -119,6 +119,24 @@ class DefaultGun {
       fill(0, 179, 255, gun[0].transparent);
       ellipse(0, 0, this.size, this.size);
     }
+    shoot(vector) {
+      let v = vector.copy();
+      let e = v.mult(0.5);
+      v.x += random(-5, 5);
+      bullets.push(new Bullet(v, 1.1, 1.1));
+      explosion.push(new Explosion(e, v, 1.1));
+      let ind = bullets.length - 1;
+      bullets[ind].modA = explosion[0].calculateForce();
+      canvas.applyForce(canvas.modAcc, explosion[0].calculateForce());
+      for (let i = 0; i < shapes.length; i++) {
+        shapes[i].applyForce(shapes[i].modAcc, explosion[0].calculateForce());
+      }
+      for (let i = 0; i < bullets.length - 1; i++) {
+        bullets[i].applyForce(bullets[i].modAcc, explosion[0].calculateForce());
+      }
+      explosion.splice(0, 1);
+      canvas.reloadTime = upgrades[0].reloadTime;
+    }
   }
   
   class FlankGuard {
@@ -150,10 +168,10 @@ class DefaultGun {
     }
     shoot(vector) {
       let oppVector = vector.copy().mult(-1);
-      bullets.push(new Bullet(vector));
-      bullets.push(new Bullet(oppVector));
-      explosion.push(new Explosion(new createVector(vector / 2, vector / 2), vector));
-      explosion.push(new Explosion(new createVector(oppVector / 6, oppVector / 6), oppVector));
+      bullets.push(new Bullet(vector, 1.1, 1.1));
+      bullets.push(new Bullet(oppVector, 0.7, 1));
+      explosion.push(new Explosion(new createVector(vector / 2, vector / 2, 1.1), vector));
+      explosion.push(new Explosion(new createVector(oppVector / 6, oppVector / 6, 0.8), oppVector));
       let ind = bullets.length - 1;
       bullets[ind - 1].modA = explosion[0].calculateForce();
       bullets[ind].modA = explosion[1].calculateForce();
@@ -871,6 +889,7 @@ class DefaultGun {
       this.transparent = 255;
       this.mass = upgrades[0].health / 5;
       this.tank = tank;
+      this.tier = 0;
     }
   
     run() {

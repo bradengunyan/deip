@@ -475,12 +475,14 @@ class Tangle {
     }
   }
   class Bullet {
-    constructor(p) {
+    constructor(p, scale, life) {
       this.position = p;
+      this.scale = scale;
+      this.life = life;
       this.velocity = new createVector(0, 0);
       this.acceleration = new createVector(0, 0);
       this.center = new createVector(width / 2, height / 2);
-      this.dying = 700;
+      this.dying = 700 * this.life;
       this.modV = new createVector(0, 0);
       this.modA = new createVector(0, 0);
       this.modVelocity = new createVector(0, 0);
@@ -488,12 +490,12 @@ class Tangle {
       this.modAcc = new createVector(0, 0);
       this.health = upgrades[0].bulletDamage;
       this.penetration = upgrades[0].penetration;
-      this.mass = upgrades[0].health / 5;
-      this.modM = this.health / 5 + this.penetration;
+      this.mass = upgrades[0].health / 5 * this.scale + 0.1 * upgrades[0].skill;
+      this.modM = this.mass;
       this.dyingSpeed = 4;
-      this.size = 17;
+      this.size = 15 * this.scale + 0.1 * upgrades[0].skill;
       this.fC = frictionC;
-      this.modMass = upgrades[0].health / 5;
+      this.modMass = this.mass;
     }
     run() {
       this.update();
@@ -529,7 +531,6 @@ class Tangle {
       this.position.add(this.velocity);
       this.position.add(this.modVelocity);
       this.position.add(this.modV);
-      this.size = 17 + 0.1 * upgrades[0].skill;
     }
     calculateCollision() {
       for (var i = 0; i < shapes.length; i++) {
